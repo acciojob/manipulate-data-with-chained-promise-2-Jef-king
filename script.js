@@ -1,31 +1,35 @@
-//your JS code here. If required.
+function resolveAfter3Seconds() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve([1, 2, 3, 4]);
+        }, 3000);
+    });
+}
 
-function resolveAfter3sec(){
-	return new Promise((resolve)=>{
-		setTimeout(()=>{
-			resolve([1,2,3,4]);
-		},3000)
-	})
+function filterOddNumbers(numbers) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            const evenNumbers = numbers.filter(number => number % 2 === 0);
+            document.getElementById('output').innerText = `Filtered even numbers: ${evenNumbers}`;
+            resolve(evenNumbers);
+        }, 1000);
+    });
 }
-function filterEvenNumber(arr){
-	return new Promise((resolve)=>{
-		setTimeout(()=>{
-			let evenNumber=arr.filter(a=>a%2===0);
-			document.querySelector("#output")innerText=evenNumber;
-		resolve(evenNumber);
-		},1000);
-		
-	})
+
+function multiplyEvenNumbers(numbers) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            const multipliedNumbers = numbers.map(number => number * 2);
+            document.getElementById('output').innerText = `Multiplied even numbers: ${multipliedNumbers}`;
+            resolve(multipliedNumbers);
+        }, 2000);
+    });
 }
-function multiplyBy2(arr){
-	return new Promise((resolve)=>{
-		setTimeout(()=>{
-			let multiply=arr.forEach(a=>return a*2;);
-			document.querySelector("#output")innerText=multiply;
-		resolve(evenNumber);
-		},2000);
-	})
-}
-resolveAfter3sec()
-	.then(filterEvennumber)
-.then(multiplyBy2)
+
+// Usage example:
+resolveAfter3Seconds()
+    .then(filterOddNumbers)
+    .then(multiplyEvenNumbers)
+    .then((finalResult) => {
+        console.log('Final result:', finalResult);
+    });
